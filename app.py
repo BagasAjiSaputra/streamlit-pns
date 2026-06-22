@@ -38,7 +38,6 @@ st.markdown("""
     
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        color: #1E293B;
     }
     
     /* Judul Utama */
@@ -46,7 +45,7 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', sans-serif;
         font-weight: 900;
         font-size: 2.3rem;
-        color: #1E293B;
+        color: #1E293B !important; /* Paksa warna gelap agar terbaca pada background biru muda */
         text-align: center;
         text-transform: uppercase;
         letter-spacing: -1px;
@@ -63,8 +62,8 @@ st.markdown("""
         text-align: center;
         font-size: 1.05rem;
         font-weight: 700;
-        color: #475569;
-        opacity: 0.9;
+        color: #FFFFFF !important; /* Paksa warna putih agar terlihat di dark mode */
+        opacity: 0.95;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 35px;
@@ -151,7 +150,7 @@ st.markdown("""
 st.sidebar.markdown(f"""
 <div style="background-color: #FFFFFF; border: 3px solid #1E293B; border-radius: 0px; padding: 20px; text-align: center; margin-bottom: 25px; box-shadow: 4px 4px 0px 0px #1E293B; color: #1E293B;">
     <div style="width: 55px; height: 55px; background-color: #DBEAFE; color: #1E40AF; border: 3px solid #1E293B; border-radius: 0px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; font-size: 1.3rem; font-weight: 900; box-shadow: 2px 2px 0px #1E293B;">
-        FA
+        BAS
     </div>
     <h4 style="margin: 0; font-weight: 900; font-size: 1.05rem; color: #1E293B; text-transform: uppercase;">Bagas Aji Saputra</h4>
     <p style="margin: 3px 0 0 0; font-size: 0.8rem; color: #475569; font-weight: 700; opacity: 0.9;">NPM 2313020028</p>
@@ -162,7 +161,7 @@ st.sidebar.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.sidebar.markdown("### Input Kebijakan")
-st.sidebar.markdown("<p style='font-size:0.85rem; opacity:0.9; margin-top:-10px; font-weight:600; color:#475569;'>Sesuaikan parameter untuk memicu prediksi keuntungan baru.</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='font-size:0.85rem; opacity:0.9; margin-top:-10px; font-weight:600; color:#E2E8F0;'>Sesuaikan parameter untuk memicu prediksi keuntungan baru.</p>", unsafe_allow_html=True)
 
 # Definisikan state untuk reset
 if "iklan_val" not in st.session_state:
@@ -271,16 +270,17 @@ with col_viz:
         # Sorot titik pilihan user saat ini (Bintang besar dengan outline slate)
         ax1.scatter(iklan, prediksi, color=chart_highlight_color, edgecolors='#1E293B', linewidths=2, s=250, marker='*', zorder=5, label='Skenario Anda')
         
-        ax1.set_title("Keuntungan vs Biaya Iklan\n(Diskon Tetap)", fontsize=9, fontweight='black', color='#1E293B')
-        ax1.set_xlabel("Biaya Iklan (Juta)", fontsize=8, fontweight='bold', color='#1E293B')
-        ax1.set_ylabel("Keuntungan (Juta)", fontsize=8, fontweight='bold', color='#1E293B')
-        ax1.grid(True, linestyle='-', alpha=0.1, color='#1E293B')
-        ax1.tick_params(labelsize=8, colors='#1E293B')
+        # Mengubah warna teks pada grafik menjadi putih agar terlihat di dark mode
+        ax1.set_title("Keuntungan vs Biaya Iklan\n(Diskon Tetap)", fontsize=9, fontweight='black', color='#FFFFFF')
+        ax1.set_xlabel("Biaya Iklan (Juta)", fontsize=8, fontweight='bold', color='#FFFFFF')
+        ax1.set_ylabel("Keuntungan (Juta)", fontsize=8, fontweight='bold', color='#FFFFFF')
+        ax1.grid(True, linestyle='-', alpha=0.15, color='#FFFFFF')
+        ax1.tick_params(labelsize=8, colors='#FFFFFF')
         
-        # Spines (bingkai) soft slate tebal
+        # Spines (bingkai) putih tebal agar terlihat di background gelap
         for spine in ax1.spines.values():
             spine.set_visible(True)
-            spine.set_color('#1E293B')
+            spine.set_color('#FFFFFF')
             spine.set_linewidth(2.2)
         
         # --- Subplot 2: Keuntungan vs Diskon ---
@@ -296,20 +296,20 @@ with col_viz:
         # Sorot titik pilihan user saat ini
         ax2.scatter(diskon, prediksi, color=chart_highlight_color, edgecolors='#1E293B', linewidths=2, s=250, marker='*', zorder=5)
         
-        ax2.set_title("Keuntungan vs Diskon\n(Iklan Tetap)", fontsize=9, fontweight='black', color='#1E293B')
-        ax2.set_xlabel("Diskon (%)", fontsize=8, fontweight='bold', color='#1E293B')
-        ax2.set_ylabel("Keuntungan (Juta)", fontsize=8, fontweight='bold', color='#1E293B')
-        ax2.grid(True, linestyle='-', alpha=0.1, color='#1E293B')
-        ax2.tick_params(labelsize=8, colors='#1E293B')
+        ax2.set_title("Keuntungan vs Diskon\n(Iklan Tetap)", fontsize=9, fontweight='black', color='#FFFFFF')
+        ax2.set_xlabel("Diskon (%)", fontsize=8, fontweight='bold', color='#FFFFFF')
+        ax2.set_ylabel("Keuntungan (Juta)", fontsize=8, fontweight='bold', color='#FFFFFF')
+        ax2.grid(True, linestyle='-', alpha=0.15, color='#FFFFFF')
+        ax2.tick_params(labelsize=8, colors='#FFFFFF')
         
-        # Spines soft slate tebal
+        # Spines putih tebal
         for spine in ax2.spines.values():
             spine.set_visible(True)
-            spine.set_color('#1E293B')
+            spine.set_color('#FFFFFF')
             spine.set_linewidth(2.2)
         
         # Handler legend satu untuk keseluruhan chart
-        fig.legend(*ax1.get_legend_handles_labels(), loc='lower center', ncol=3, frameon=True, edgecolor='#1E293B', facecolor='#FFFFFF', fontsize=8)
+        fig.legend(*ax1.get_legend_handles_labels(), loc='lower center', ncol=3, frameon=True, edgecolor='#FFFFFF', facecolor='#1E293B', fontsize=8, labelcolor='white')
         plt.tight_layout(rect=[0, 0.08, 1, 0.95])
         st.pyplot(fig)
         
@@ -325,18 +325,18 @@ with col_viz:
         # Custom styling bar chart horizontal
         for spine in ax_bar.spines.values():
             spine.set_visible(True)
-            spine.set_color('#1E293B')
+            spine.set_color('#FFFFFF')
             spine.set_linewidth(2.2)
             
-        ax_bar.set_xlabel("Keuntungan (Juta Rupiah)", fontsize=8, fontweight='bold', color='#1E293B')
-        ax_bar.tick_params(labelsize=8, colors='#1E293B')
-        ax_bar.grid(axis='x', linestyle='-', alpha=0.1, color='#1E293B')
+        ax_bar.set_xlabel("Keuntungan (Juta Rupiah)", fontsize=8, fontweight='bold', color='#FFFFFF')
+        ax_bar.tick_params(labelsize=8, colors='#FFFFFF')
+        ax_bar.grid(axis='x', linestyle='-', alpha=0.15, color='#FFFFFF')
         
-        # Menambahkan label teks di dalam/ujung bar
+        # Menambahkan label teks di dalam/ujung bar dengan warna putih agar kontras di dark background
         for bar in bars:
             width = bar.get_width()
             ax_bar.text(width + 2, bar.get_y() + bar.get_height()/2, f'Rp {width:.2f} Jt', 
-                        ha='left', va='center', fontweight='black', fontsize=8, color='#1E293B')
+                        ha='left', va='center', fontweight='black', fontsize=8, color='#FFFFFF')
             
         plt.tight_layout()
         st.pyplot(fig_bar)
