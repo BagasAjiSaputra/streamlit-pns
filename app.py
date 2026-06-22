@@ -152,8 +152,8 @@ st.sidebar.markdown(f"""
     <div style="width: 55px; height: 55px; background-color: #60A5FA; color: #000000; border: 3px solid #000000; border-radius: 0px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; font-size: 1.3rem; font-weight: 900; box-shadow: 3px 3px 0px #000000;">
         FA
     </div>
-    <h4 style="margin: 0; font-weight: 900; font-size: 1.05rem; color: #000000; text-transform: uppercase;">Fatwabith Akbar</h4>
-    <p style="margin: 3px 0 0 0; font-size: 0.8rem; color: #000000; font-weight: 700; opacity: 0.7;">NPM 2313020014</p>
+    <h4 style="margin: 0; font-weight: 900; font-size: 1.05rem; color: #000000; text-transform: uppercase;">Bagas Aji Saputra</h4>
+    <p style="margin: 3px 0 0 0; font-size: 0.8rem; color: #000000; font-weight: 700; opacity: 0.7;">NPM 2313020028</p>
     <div style="margin-top: 12px; display: inline-block; font-size: 0.75rem; color: #000000; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; background-color: #FCA5A5; border: 2px solid #000000; padding: 3px 10px; box-shadow: 2px 2px 0px #000000;">
         PNS Streamlit
     </div>
