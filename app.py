@@ -142,36 +142,6 @@ st.markdown("""
         box-shadow: 2px 2px 0px #1E293B;
         display: inline-block;
     }
-    
-    /* Animasi untuk Canny (Glow Efek) */
-    @keyframes canny-glow {
-        0% { box-shadow: 5px 5px 0px 0px #1E293B, 0 0 10px rgba(16, 185, 129, 0.4); }
-        50% { box-shadow: 5px 5px 0px 0px #1E293B, 0 0 25px rgba(16, 185, 129, 0.9); }
-        100% { box-shadow: 5px 5px 0px 0px #1E293B, 0 0 10px rgba(16, 185, 129, 0.4); }
-    }
-    
-    .canny-card-active {
-        animation: canny-glow 2s infinite ease-in-out;
-    }
-    
-    /* Animasi untuk Uncanny (Geter / Shake) */
-    @keyframes uncanny-shake {
-        0% { transform: translate(1px, 1px) rotate(0deg); }
-        10% { transform: translate(-1px, -2px) rotate(-1deg); }
-        20% { transform: translate(-2px, 0px) rotate(1deg); }
-        30% { transform: translate(0px, 2px) rotate(0deg); }
-        40% { transform: translate(1px, -1px) rotate(1deg); }
-        50% { transform: translate(-1px, 2px) rotate(-1deg); }
-        60% { transform: translate(-2px, 1px) rotate(0deg); }
-        70% { transform: translate(2px, 1px) rotate(-1deg); }
-        80% { transform: translate(-1px, -1px) rotate(1deg); }
-        90% { transform: translate(2px, 2px) rotate(0deg); }
-        100% { transform: translate(1px, -2px) rotate(-1deg); }
-    }
-    
-    .uncanny-card-active {
-        animation: uncanny-shake 0.3s infinite;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -365,87 +335,6 @@ with col_kpi3:
         <span class="delta-badge {delta_class}">{delta_pct_str} dibanding baseline</span>
     </div>
     """, unsafe_allow_html=True)
-
-# --- LOGIKA MEME METER MR. INCREDIBLE ---
-if delta_pct >= 80:
-    incredible_phase = "Phase 4: Super Canny (Cahaya Laser Ilahi)"
-    incredible_desc = "Mata Mr. Incredible menyala merah membara! Keuntungan melonjak drastis tak terbendung. Ini bukan lagi bisnis biasa, ini adalah Stonks Level Dewa!"
-    incredible_bg = "#ECFDF5" # Mint Green
-    incredible_border = "#10B981" # Green
-    incredible_text = "#065F46"
-    incredible_music = "🎵 Daft Punk - Robot Rock (Edisi Keras Sekali)"
-    incredible_avatar = "😎⚡"
-    incredible_class = "canny-card-active"
-elif delta_pct >= 20:
-    incredible_phase = "Phase 2: Canny (Senyum Pahlawan Lebar)"
-    incredible_desc = "Wajah Mr. Incredible berwarna penuh dengan senyum lebar penuh percaya diri. Keputusan bisnis Anda sangat solid dan menguntungkan!"
-    incredible_bg = "#EFF6FF" # Blue
-    incredible_border = "#3B82F6" # Blue
-    incredible_text = "#1E40AF"
-    incredible_music = "🎵 Kevin MacLeod - Life's A Breeze (Santai & Asyik)"
-    incredible_avatar = "😃"
-    incredible_class = "canny-card-active"
-elif delta_pct >= -10:
-    incredible_phase = "Phase 1: Normal (Tatap Layar Biasa)"
-    incredible_desc = "Mr. Incredible menatap layar dengan muka datar kantoran biasa. Keuntungan stabil, tidak ada kejutan, tapi kopi kantor masih cukup."
-    incredible_bg = "#F8FAFC" # Slate
-    incredible_border = "#64748B" # Slate
-    incredible_text = "#334155"
-    incredible_music = "🎵 Suara AC Kantor & Ketikan Keyboard Standard"
-    incredible_avatar = "😐"
-    incredible_class = ""
-elif delta_pct >= -35:
-    incredible_phase = "Phase 2 Uncanny: Mr. Incredible Hitam Putih"
-    incredible_desc = "Wajah Mr. Incredible mendadak kehilangan warna dan menjadi hitam putih. Senyumnya pudar, dia mulai merasakan ada yang kurang beres dengan anggaran Anda."
-    incredible_bg = "#F1F5F9" # Light gray
-    incredible_border = "#475569" # Slate
-    incredible_text = "#1E293B"
-    incredible_music = "🎵 Kevin MacLeod - Sneaky Adventure (Mulai Tegang)"
-    incredible_avatar = "😰"
-    incredible_class = "uncanny-card-active"
-elif delta_pct >= -60:
-    incredible_phase = "Phase 5 Uncanny: Tengkorak Depresi"
-    incredible_desc = "Mr. Incredible berubah menjadi tengkorak hitam putih dengan mata kosong melotot. Margin keuntungan menyusut parah! Detak jantung CFO meningkat."
-    incredible_bg = "#FEF2F2" # Reddish
-    incredible_border = "#EF4444" # Red
-    incredible_text = "#991B1B"
-    incredible_music = "🎵 Sibelius - Valse Triste (Sangat Lambat & Muram)"
-    incredible_avatar = "💀"
-    incredible_class = "uncanny-card-active"
-else:
-    incredible_phase = "Phase 9+ Uncanny: Void / Kegelapan Abadi"
-    incredible_desc = "Kiamat Finansial! Wajah Mr. Incredible meleleh dan terdistorsi menjadi lubang hitam kosong tak berbentuk. Perusahaan resmi membakar seluruh uang kas!"
-    incredible_bg = "#000000" # Black
-    incredible_border = "#EF4444" # Red glow
-    incredible_text = "#FFFFFF"
-    incredible_music = "🎵 The Caretaker - It's Just a Burning Memory"
-    incredible_avatar = "🕳️😱"
-    incredible_class = "uncanny-card-active"
-
-# Tampilkan Mr. Incredible Meme Card
-st.markdown(f"""
-<div class="kpi-card {incredible_class}" style="background-color: {incredible_bg}; border: 3px solid {incredible_border}; box-shadow: 6px 6px 0px 0px #1E293B; margin-top: 10px; margin-bottom: 25px; padding: 20px; transition: all 0.3s ease;">
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <div style="font-size: 3.5rem; line-height: 1;">{incredible_avatar}</div>
-        <div style="flex-grow: 1; min-width: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1E293B; padding-bottom: 5px; margin-bottom: 8px; flex-wrap: wrap; gap: 10px;">
-                <span style="font-size: 0.85rem; font-weight: 900; color: {incredible_border}; text-transform: uppercase; letter-spacing: 1px;">
-                    INDIKATOR MEME MR. INCREDIBLE
-                </span>
-                <span style="background-color: {incredible_border}; color: {incredible_text if incredible_bg != '#000000' else '#FFFFFF'}; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border: 1.5px solid #1E293B; box-shadow: 1px 1px 0px #1E293B; text-transform: uppercase;">
-                    {incredible_music}
-                </span>
-            </div>
-            <h4 style="margin: 0; color: {incredible_text}; font-weight: 900; font-size: 1.2rem; text-transform: uppercase;">
-                {incredible_phase}
-            </h4>
-            <p style="margin: 6px 0 0 0; font-size: 0.85rem; font-weight: 600; color: {incredible_text}; line-height: 1.4; opacity: 0.9;">
-                {incredible_desc}
-            </p>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
 
 # Pembatas Konten
 st.markdown("<br>", unsafe_allow_html=True)
